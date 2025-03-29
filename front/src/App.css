@@ -1,0 +1,8 @@
+@import 'leaflet/dist/leaflet.css';
+
+
+.App {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding-top: 40px;
+}

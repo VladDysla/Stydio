@@ -1,0 +1,70 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+/* Обнуляем отступы и поля */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Сбросим шрифты */
+body, h1, h2, h3, h4, h5, h6, p, a, li, ol, ul {
+   font-family: "Varela Round", sans-serif;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+/* Сбросим стандартные стили для ссылок */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Сбросим стандартные стили для списков */
+ol, ul {
+  list-style: none;
+}
+
+/* Сбросим стандартные стили для таблиц */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Сбросим стандартные стили для формы */
+input, button, select, textarea {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+/* Обнуляем стандартные стили для изображений */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Обнуляем стили для видео */
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Обнуляем стили для iframe */
+iframe {
+  border: none;
+}
+
+/* Обнуляем стили для блоков */
+blockquote {
+  margin: 0;
+  padding: 0;
+}

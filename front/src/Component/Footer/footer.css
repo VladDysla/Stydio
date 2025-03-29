@@ -1,0 +1,125 @@
+/* Базові стилі */
+.footer {
+   --footer-bg: #f0efef;
+   --text-color: #3b3b3b;
+   --link-hover: #000;
+   --gap: clamp(1rem, 3vw, 2rem);
+   --section-padding: clamp(2rem, 5vw, 3rem);
+   
+   background-color: var(--footer-bg);
+   padding: var(--section-padding) clamp(1rem, 5vw, 4rem);
+   margin-top: clamp(3rem, 8vw, 6rem);
+ }
+ 
+ .footer-container {
+   max-width: 1200px;
+   margin: 0 auto;
+   display: grid;
+   grid-template-columns: 1fr;
+   gap: var(--gap);
+ }
+ 
+ /* Логотип */
+ .footer-logo img {
+   width: clamp(50px, 8vw, 60px);
+   height: clamp(50px, 8vw, 60px);
+   object-fit: contain;
+ }
+ 
+ /* Навігація */
+ .footer-nav {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: clamp(1rem, 2vw, 1.5rem);
+   padding: 0;
+   margin: 0;
+   list-style: none;
+ }
+ 
+ .footer-nav__item a {
+   color: var(--text-color);
+   font-size: clamp(0.875rem, 2vw, 1.125rem);
+   font-weight: 600;
+   text-decoration: none;
+   transition: color 0.2s;
+ }
+ 
+ .footer-nav__item a:hover {
+   color: var(--link-hover);
+ }
+ 
+ /* Соціальні мережі */
+ .footer-social {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: clamp(1rem, 3vw, 2rem);
+ }
+ 
+ .social-group {
+   display: flex;
+   flex-direction: column;
+   gap: clamp(1rem, 2vw, 1.5rem);
+ }
+ 
+ .social-link, .phone-link {
+   display: flex;
+   align-items: center;
+   gap: 0.75rem;
+   color: var(--text-color);
+   text-decoration: none;
+   font-size: clamp(0.875rem, 2vw, 1.125rem);
+ }
+ 
+ .social-link:hover {
+   color: var(--link-hover);
+ }
+ 
+ .social-link img, .phone-link img {
+   width: clamp(24px, 4vw, 32px);
+   height: clamp(24px, 4vw, 32px);
+ }
+ 
+ /* Адаптація для планшетів */
+ @media (min-width: 600px) {
+   .footer-container {
+     grid-template-columns: auto 1fr auto;
+     align-items: start;
+   }
+   
+   .footer-nav {
+     grid-template-columns: repeat(3, 1fr);
+     justify-self: center;
+   }
+   
+   .footer-social {
+     grid-template-columns: 1fr;
+   }
+ }
+ 
+ /* Адаптація для десктопів */
+ @media (min-width: 900px) {
+   .footer-nav {
+     grid-template-columns: repeat(4, 1fr);
+   }
+   
+   .footer-social {
+     grid-template-columns: repeat(2, 1fr);
+   }
+ }
+ 
+ /* Анімації */
+ .social-link {
+   transition: transform 0.2s;
+ }
+ 
+ .social-link:hover {
+   transform: translateX(5px);
+ }
+ 
+ .footer-logo img {
+   transition: transform 0.3s;
+ }
+ 
+ .footer-logo:hover img {
+   transform: rotate(15deg);
+ }
