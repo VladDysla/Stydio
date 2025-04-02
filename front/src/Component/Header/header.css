@@ -189,6 +189,34 @@
   background-color: #f5f5f5;
 }
 
+.basket-icon {
+  position: relative;
+  margin-left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.basket-icon img {
+  width: 28px;
+  height: 28px;
+}
+
+.basket-counter {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff0000;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Анімація для модального вікна */
 @keyframes modalFadeIn {
   from { opacity: 0; transform: translateY(-20px); }
