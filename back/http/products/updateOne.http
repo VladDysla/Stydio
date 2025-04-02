@@ -1,0 +1,7 @@
+PUT http://localhost:5000/api/product/67ec32e07a0f98ade03371e7 HTTP/1.1
+ Content-Type: application/json
+
+{
+   "name":"Apple",
+    "cost":20
+}
