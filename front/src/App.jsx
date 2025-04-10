@@ -16,13 +16,14 @@ import Basket from "./Basket/Basket.jsx";
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div>
         <Routes>
           <Route
             path="/"
             element={
               <>
-                <Header />
+              <div className="App">
+              <Header />
                 <About />
                 <Services />
                 <Product />
@@ -30,11 +31,12 @@ function App() {
                 <Reviews />
                 <Timetable />
                 <Map />
+              </div>
+                <Footer />
               </>
             }
           />
           <Route path="/basket" element={<Basket />} />
-          <Route path="/" element={<Footer />} />
         </Routes>
       </div>
     </Router>

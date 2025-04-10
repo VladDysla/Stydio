@@ -1,8 +1,7 @@
 import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup  } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker  } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import Pin from '../../assents/images/pin.png';
 
 // Фикс для стандартных маркеров Leaflet
 delete L.Icon.Default.prototype._getIconUrl;

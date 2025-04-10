@@ -3,10 +3,15 @@ import "./header.css";
 import Logo from "../../assents/images/logo.png";
 import Basket from "../../assents/images/basket.png";
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux'; // Добавляем импорт
 
 export default function Header() {
   const phoneNumber = "0937561470";
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  // Получаем количество товаров в корзине из Redux
+  const cartItems = useSelector((state) => state.products.cartItems);
+  const cartItemsCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   const ArrowIcon = () => (
     <svg
@@ -75,7 +80,6 @@ export default function Header() {
             className="header-btn"
             onClick={() => setIsModalOpen(true)}
           >
-            <ArrowIcon />
             <span className="self-center whitespace-no-wrap">Записатися</span>
           </button>
         </div>
@@ -91,7 +95,7 @@ export default function Header() {
           </button>
           <button className="basket-icon" onClick={() => navigate("/basket")}>
             <img src={Basket} alt="Кошик" />
-            <span className="basket-counter">0</span>
+            <span className="basket-counter">{cartItemsCount}</span>
           </button>
         </div>
       </div>

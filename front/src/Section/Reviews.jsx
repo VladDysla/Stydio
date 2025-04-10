@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Star from "../assents/images/star.png";
 import subStar from "../assents/images/sub_star.png";
-// import defaultAvatar from "../assents/images/default-avatar.png"; // Добавьте дефолтный аватар
 
 export default function Reviews() {
-  // Состояния для формы
   const [formData, setFormData] = useState({
     name: "",
     review: "",
     rating: 0,
   });
 
-  // Загрузка отзывов из localStorage при монтировании компонента
   const [reviews, setReviews] = useState(() => {
     const savedReviews = localStorage.getItem("savedReviews");
     return savedReviews
@@ -28,18 +25,40 @@ export default function Reviews() {
         ];
   });
 
-  const handleAdminDelete = () => {
-    const reviewId = Number(window.prompt("Введите ID отзыва для удаления:"));
-    if (!reviewId || isNaN(reviewId)) return;
+  const [adminMode, setAdminMode] = useState(false);
+  const [clickCount, setClickCount] = useState(0);
 
+  // Активация админ-режима по тройному клику на заголовок
+  const handleAdminActivation = () => {
+    const newCount = clickCount + 1;
+    setClickCount(newCount);
+    
+    if (newCount === 3) {
+      const password = prompt("Введите пароль админа:");
+      if (password === "12345") { // Простой пароль, можно изменить
+        setAdminMode(true);
+        alert("Админ-режим активирован");
+      } else {
+        alert("Неверный пароль");
+      }
+      setClickCount(0);
+    }
+
+    // Сброс счетчика через 1 секунду
+    setTimeout(() => {
+      if (clickCount > 0) {
+        setClickCount(0);
+      }
+    }, 1000);
+  };
+
+  const handleAdminDelete = (reviewId) => {
     const confirmDelete = window.confirm(`Удалить отзыв с ID ${reviewId}?`);
     if (confirmDelete) {
       setReviews(reviews.filter((review) => review.id !== reviewId));
     }
   };
 
-  console.log("reviews:", reviews);
-  // Обработчики изменений
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -49,13 +68,10 @@ export default function Reviews() {
     setFormData((prev) => ({ ...prev, rating: selectedRating }));
   };
 
-  // Отправка формы
-  // Сохранение отзывов в localStorage при их изменении
   useEffect(() => {
     localStorage.setItem("savedReviews", JSON.stringify(reviews));
   }, [reviews]);
 
-  // Остальной код остается без изменений...
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -64,7 +80,6 @@ export default function Reviews() {
       return;
     }
 
-    // Сохраняем имя гостя в localStorage
     if (!localStorage.getItem("userToken")) {
       localStorage.setItem("guestName", formData.name);
     }
@@ -79,8 +94,6 @@ export default function Reviews() {
     };
 
     setReviews((prev) => [newReview, ...prev]);
-
-    // Сброс формы
     setFormData({
       name: "",
       review: "",
@@ -88,9 +101,7 @@ export default function Reviews() {
     });
   };
 
-  // Удаление отзыва
   const handleDeleteReview = (reviewId, userToken) => {
-    // Для гостей используем имя из localStorage или prompt
     const getGuestToken = () => {
       const guestName =
         localStorage.getItem("guestName") ||
@@ -103,15 +114,15 @@ export default function Reviews() {
     const currentUserToken =
       localStorage.getItem("userToken") || getGuestToken();
 
-    if (!currentUserToken) return; // Пользователь отменил ввод имени
+    if (!currentUserToken) return;
 
-    if (userToken === currentUserToken) {
+    if (userToken === currentUserToken || adminMode) {
       setReviews(reviews.filter((review) => review.id !== reviewId));
     } else {
       alert("Ви можете видаляти лише свої відгуки");
     }
   };
-  // Расчет статистики
+
   const calculateStats = () => {
     const total = reviews.length;
     if (total === 0) return null;
@@ -128,7 +139,7 @@ export default function Reviews() {
   
     return {
       averageRating,
-      roundedAverage: Math.round(averageRating), // Добавляем округленное значение
+      roundedAverage: Math.round(averageRating),
       ratingPercentages: {
         1: Math.round((ratingCounts[1] / total) * 100),
         2: Math.round((ratingCounts[2] / total) * 100),
@@ -141,28 +152,42 @@ export default function Reviews() {
 
   const stats = calculateStats();
 
-
   useEffect(() => {
     const stats = calculateStats();
     localStorage.setItem('reviewsStats', JSON.stringify(stats));
   }, [reviews]);
-  
-
-
 
   return (
     <section id="reviews" className="reviews-sec">
       <div className="reviews-container">
         <div className="reviews-text">
-          <button
-            onClick={handleAdminDelete}
-            style={{ background: "#ff4444", color: "white", marginTop: "10px" }}
-          >
-            Удалить любой отзыв (админ)
-          </button>
-          <h3>Відгуки</h3>
+          {adminMode && (
+            <div className="admin-panel" style={{
+              background: "#f8f8f8",
+              padding: "10px",
+              borderRadius: "8px",
+              marginBottom: "15px",
+              border: "1px solid #ff4444"
+            }}>
+              <p style={{ color: "#ff4444", margin: "0 0 10px 0" }}>Админ-режим</p>
+              <button
+                onClick={() => setAdminMode(false)}
+                style={{ 
+                  background: "#ff4444", 
+                  color: "white", 
+                  border: "none",
+                  padding: "5px 10px",
+                  borderRadius: "4px",
+                  cursor: "pointer"
+                }}
+              >
+                Выйти
+              </button>
+            </div>
+          )}
+          
+          <h3 onClick={handleAdminActivation} style={{ cursor: "pointer" }}>Відгуки</h3>
 
-          {/* Форма для отзыва */}
           <form className="review-form" onSubmit={handleSubmit}>
             <h4>Залишити відгук</h4>
 
@@ -214,7 +239,6 @@ export default function Reviews() {
             <p className="required-hint">* Обов'язкові поля</p>
           </form>
 
-          {/* Список отзывов */}
           <div className="reviews-list">
             {reviews.map((review) => (
               <div key={review.id} className="review-item">
@@ -238,9 +262,26 @@ export default function Reviews() {
                     onClick={() =>
                       handleDeleteReview(review.id, review.userToken)
                     }
+                    style={{
+                      fontSize: "18px",
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      color: adminMode ? "#ff4444" : "#999",
+                      fontWeight: adminMode ? "bold" : "normal"
+                    }}
                   >
                     ×
                   </button>
+                  {adminMode && (
+                    <span style={{ 
+                      marginLeft: "10px", 
+                      fontSize: "12px",
+                      color: "#666"
+                    }}>
+                      ID: {review.id}
+                    </span>
+                  )}
                 </div>
                 <p className="review-content">{review.text}</p>
               </div>
@@ -248,42 +289,33 @@ export default function Reviews() {
           </div>
         </div>
 
-        {/* Блок с рейтингом */}
         <div className="reviews-banners">
           <div className="reviews-banner__star">
             <div className="rating-summary">
               <h4>Рейтинг</h4>
               {stats ? (
-      <>
-        <div className="average-rating">
-          Середня оцінка: <strong>{stats.roundedAverage}</strong>/5
-        </div>
-        <div className="total-reviews">
-          Всього відгуків: <strong>{reviews.length}</strong>
-        </div>
-        <div className="stars-ul">
-          {[1, 2, 3, 4, 5].map((star) => (
-            <img
-              key={star}
-              src={star <= stats.roundedAverage ? subStar : Star}
-              alt="Зірка"
-              className="review-star"
-            />
-          ))}
-        </div>
-      </>
-    ) : (
-      <p>Ще немає відгуків</p>
-    )}
+                <>
+                  <div className="average-rating">
+                    Середня оцінка: <strong>{stats.roundedAverage}</strong>/5
+                  </div>
+                  <div className="total-reviews">
+                    Всього відгуків: <strong>{reviews.length}</strong>
+                  </div>
+                  <div className="stars-ul">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <img
+                        key={star}
+                        src={star <= stats.roundedAverage ? subStar : Star}
+                        alt="Зірка"
+                        className="review-star"
+                      />
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <p>Ще немає відгуків</p>
+              )}
             </div>
-
-            {/* <ul className="stars-ul">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <li key={star} className="star-item">
-                  <img src={Star} alt="Зірка" />
-                </li>
-              ))}
-            </ul> */}
 
             {[5, 4, 3, 2, 1].map((rating) => (
               <div key={rating} className="reviews-line__average">

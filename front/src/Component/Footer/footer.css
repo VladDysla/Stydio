@@ -36,15 +36,16 @@
    list-style: none;
  }
  
- .footer-nav__item a {
+ .footer-nav__item {
    color: var(--text-color);
    font-size: clamp(0.875rem, 2vw, 1.125rem);
    font-weight: 600;
    text-decoration: none;
    transition: color 0.2s;
+   cursor: pointer;
  }
  
- .footer-nav__item a:hover {
+ .footer-nav__item:hover {
    color: var(--link-hover);
  }
  

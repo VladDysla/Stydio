@@ -7,6 +7,17 @@ import Telegram from "../../assents/images/telegram.png";
 import Phone from "../../assents/images/phone.png";
 
 export default function Footer() {
+  
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <footer className="footer">
     <div className="footer-container">
@@ -15,13 +26,48 @@ export default function Footer() {
       </div>
       
       <ul className="footer-nav">
-        <li className="footer-nav__item"><a href="#">Про нас</a></li>
-        <li className="footer-nav__item"><a href="#">Послуги</a></li>
-        <li className="footer-nav__item"><a href="#">Товари</a></li>
-        <li className="footer-nav__item"><a href="#">Команда</a></li>
-        <li className="footer-nav__item"><a href="#">Відгуки</a></li>
-        <li className="footer-nav__item"><a href="#">Локація</a></li>
-        <li className="footer-nav__item"><a href="#">Карта</a></li>
+      <li 
+          className="footer-nav__item" 
+          onClick={() => scrollToSection('about')}
+        >
+          Про нас
+        </li>
+        <li 
+          className="footer-nav__item" 
+          onClick={() => scrollToSection('services')}
+        >
+          Послуги
+        </li>
+        <li 
+          className="footer-nav__item" 
+          onClick={() => scrollToSection('products')}
+        >
+          Товари
+        </li>
+        <li 
+          className="footer-nav__item" 
+          onClick={() => scrollToSection('comand')}
+        >
+          Команда
+        </li>
+        <li 
+          className="footer-nav__item" 
+          onClick={() => scrollToSection('reviews')}
+        >
+          Відгуки
+        </li>
+        <li 
+          className="footer-nav__item" 
+          onClick={() => scrollToSection('location')}
+        >
+          Локація
+        </li>
+        <li 
+          className="footer-nav__item" 
+          onClick={() => scrollToSection('map')}
+        >
+          Карта
+        </li>
       </ul>
       
       <div className="footer-social">

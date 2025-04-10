@@ -6,6 +6,7 @@ import Telegram from "./../assents/images/telegram.png";
 
 export default function About() {
   const [isOpen, setIsOpen] = useState(false);
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -15,6 +16,7 @@ export default function About() {
       });
     }
   };
+  
   return (
     <section className="about-sec">
       <div className="about-container">
