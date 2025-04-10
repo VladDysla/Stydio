@@ -10,9 +10,13 @@ const mongoose = require('mongoose')
          type: Number,
          required: true
      },
-     image:{
-         type:String,
-     }
+     photos:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'Photo'
+    }],
+    image:{
+        type:String,
+    }
  
  })
  

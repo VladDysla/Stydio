@@ -15,5 +15,6 @@ app.use(cors({
 // Остальные middleware
 app.use(express.json()); // bodyParser заменён на встроенный в Express 4.16+
 app.use('/api', rootRouter);
+app.use('/images', express.static('public/images'))
 
 module.exports = app;

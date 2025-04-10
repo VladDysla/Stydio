@@ -1,0 +1,6 @@
+PUT http://localhost:5000/api/image/67f3ddc69f84f02c473f42c2
+ Content-Type: application/json
+ 
+ {
+     "path":"C:\\Users\\User\\Desktop\\Freshcode\\Beauty-test\\public\\images\\1744035270322.batman.jpg"
+ }
