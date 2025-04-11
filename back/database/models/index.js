@@ -2,28 +2,26 @@ const mongoose = require("mongoose");
 const Service = require("./serviceModel");
 const Product = require('./productModel');
 const Photo = require('./photoModel');
+const db = require("../../config/mConfig.json");
 
-// Ваш рядок підключення з Atlas (замініть на свій)
-const ATLAS_CONNECTION_STRING = "mongodb+srv://nasonov117:Monoligh12345@beauty.gfstfwq.mongodb.net/?retryWrites=true&w=majority&appName=beauty";
+// Берем конфиг для текущего окружения (development/production)
+const CONFIG = db[process.env.NODE_ENV || "development"];
 
-const connectDB = async () => {
-  try {
-    await mongoose.connect(ATLAS_CONNECTION_STRING, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      retryWrites: true,
-      w: 'majority'
-    });
-    console.log('✅ Підключено до MongoDB Atlas');
-  } catch (err) {
-    console.error('❌ Помилка підключення до Atlas:', err.message);
-    process.exit(1);
-  }
-};
+// Если в конфиге есть поле 'url' (например, для MongoDB Atlas), используем его
+const url = CONFIG.url;
 
-// Експортуємо моделі та функцію підключення
+// Подключение к MongoDB
+mongoose.connect(url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("MongoDB connected successfully"))
+.catch((err) => {
+  console.error("MongoDB connection failed:", err);
+  process.exit(1);
+});
+
 module.exports = {
-  connectDB,
   Service,
   Product,
   Photo

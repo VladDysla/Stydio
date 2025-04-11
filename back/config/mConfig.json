@@ -1,9 +1,8 @@
 {
     "development": {
-        "host": "127.0.0.1",
-        "port": 27017,
-        "database": "beauty"
+      "url": "mongodb://nasonov117:Monoligh12345@ac-viwvyay-shard-00-00.s7u2obl.mongodb.net:27017,ac-viwvyay-shard-00-01.s7u2obl.mongodb.net:27017,ac-viwvyay-shard-00-02.s7u2obl.mongodb.net:27017/beauty?replicaSet=atlas-6mx906-shard-0&ssl=true&authSource=admin&retryWrites=true&w=majority"
     },
-    "test": {},
-    "production": {}
-}
+    "production": {
+      "url": "mongodb://nasonov117:Monoligh12345@ac-viwvyay-shard-00-00.s7u2obl.mongodb.net:27017,ac-viwvyay-shard-00-01.s7u2obl.mongodb.net:27017,ac-viwvyay-shard-00-02.s7u2obl.mongodb.net:27017/beauty?replicaSet=atlas-6mx906-shard-0&ssl=true&authSource=admin&retryWrites=true&w=majority"
+    }
+  }
