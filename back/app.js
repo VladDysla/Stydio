@@ -6,7 +6,9 @@ const app = express();
 // Добавляем CORS middleware первым
 app.use(cors({
    origin: [
-     'http://localhost:3000',
+    'http://studiobeauty.com.ua',
+    'https://studiobeauty.com.ua',
+    'http://localhost:3000', // для локальной разработки
      'http://192.168.0.104:3000' // Добавьте ваш IP
    ],
    credentials: true
