@@ -8,8 +8,9 @@ app.use(cors({
    origin: [
     'http://studiobeauty.com.ua',
     'https://studiobeauty.com.ua',
+    'https://www.studiobeauty.com.ua/',
     'http://localhost:3000', // для локальной разработки
-     'http://192.168.0.104:3000' // Добавьте ваш IP
+    'http://192.168.0.104:3000' // Добавьте ваш IP
    ],
    credentials: true
  }));// Разрешает все CORS-запросы (для разработки)
