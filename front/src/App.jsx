@@ -22,16 +22,16 @@ function App() {
             path="/"
             element={
               <>
-              <div className="App">
-              <Header />
-                <About />
-                <Services />
-                <Product />
-                <Comand />
-                <Reviews />
-                <Timetable />
-                <Map />
-              </div>
+                <div className="App">
+                  <Header />
+                  <About />
+                  <Services />
+                  <Product />
+                  <Comand />
+                  <Reviews />
+                  <Timetable />
+                  <Map />
+                </div>
                 <Footer />
               </>
             }

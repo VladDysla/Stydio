@@ -165,11 +165,6 @@
     margin: 0 auto;
     width: 300px;
   }
-  .header-btn span {
-    display: block;
-    padding-left: 70px;
-  }
-
   .header-btn__phone {
     margin-top: 30px;
   }
@@ -305,6 +300,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+
+/* Великі телефони (481px - 767px) */
+@media (max-width: 767px) {
+
+  .basket-icon {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+
+/* Маленькі телефони (320px - 480px) */
+@media (max-width: 480px) {
+
+  .modal-content {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .modal-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .basket-counter {
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+  }
 }
 
 /* Анімація для модального вікна */

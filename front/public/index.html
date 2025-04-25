@@ -1,30 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <meta name="theme-color" content="#ca56e7" />
+    <meta name="google-site-verification" content="sEMs2CzH0cn38-K7f4gmiO5IBJZO6L1K9Qc93DbanpU" />
+  
+    <!-- Мова -->
+    <meta http-equiv="Content-Language" content="uk" />
+  
+    <!-- Опис -->
+    <meta name="description" content="Студія краси та епіляції Ірини Цуканової — професійні послуги з епіляції та догляду за тілом у Києві." />
+  
+    <!-- Favicon -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon.svg" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <meta name="msapplication-TileColor" content="#ca56e7" />
+    <meta name="msapplication-TileImage" content="%PUBLIC_URL%/mstile-144x144.png" />
+  
+    <!-- Webfonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  
+    <!-- Open Graph (Facebook, Instagram) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="uk_UA" />
+    <meta property="og:site_name" content="Beauty Studio" />
+    <meta property="og:title" content="Beauty Studio | Студія краси Ірини Цуканової" />
+    <meta property="og:description" content="Професійні послуги з епіляції та догляду за тілом у Києві." />
+    <meta property="og:url" content="https://studiobeauty.com.ua/" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg" />
+  
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Beauty Studio | Студія краси Ірини Цуканової" />
+    <meta name="twitter:description" content="Професійні послуги з епіляції та догляду за тілом у Києві." />
+    <meta name="twitter:image" content="%PUBLIC_URL%/og-image.jpg" />
+  
+    <!-- Manifest -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.webmanifest" />
+  
+    <!-- Schema.org для Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BeautySalon",
+      "name": "Beauty Studio",
+      "image": "https://studiobeauty.com.ua/og-image.jpg",
+      "url": "https://studiobeauty.com.ua/",
+      "telephone": "+380XXXXXXXXX",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Київ",
+        "addressCountry": "UA"
+      },
+      "priceRange": "$$",
+      "description": "Професійні послуги з епіляції та догляду за тілом у Києві"
+    }
+    </script>
+  
+    <!-- Google Analytics (замінити на свій ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+  
+    <title>Beauty Studio | Студія краси Ірини Цуканової</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

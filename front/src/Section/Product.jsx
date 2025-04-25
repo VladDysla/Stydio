@@ -46,7 +46,7 @@ export default function Product() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/product/");
+        const response = await fetch("https://stydio-j4mn.onrender.com/api/product");
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

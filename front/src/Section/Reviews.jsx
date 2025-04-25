@@ -101,28 +101,6 @@ export default function Reviews() {
     });
   };
 
-  const handleDeleteReview = (reviewId, userToken) => {
-    const getGuestToken = () => {
-      const guestName =
-        localStorage.getItem("guestName") ||
-        prompt("Введіть ваше ім'я, щоб підтвердити авторство");
-      if (!guestName) return null;
-      localStorage.setItem("guestName", guestName);
-      return `guest_${guestName}`;
-    };
-
-    const currentUserToken =
-      localStorage.getItem("userToken") || getGuestToken();
-
-    if (!currentUserToken) return;
-
-    if (userToken === currentUserToken || adminMode) {
-      setReviews(reviews.filter((review) => review.id !== reviewId));
-    } else {
-      alert("Ви можете видаляти лише свої відгуки");
-    }
-  };
-
   const calculateStats = () => {
     const total = reviews.length;
     if (total === 0) return null;
@@ -257,30 +235,31 @@ export default function Reviews() {
                     </div>
                   </div>
                   <span className="review-date">{review.date}</span>
-                  <button
-                    className="delete-review-btn"
-                    onClick={() =>
-                      handleDeleteReview(review.id, review.userToken)
-                    }
-                    style={{
-                      fontSize: "18px",
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      color: adminMode ? "#ff4444" : "#999",
-                      fontWeight: adminMode ? "bold" : "normal"
-                    }}
-                  >
-                    ×
-                  </button>
                   {adminMode && (
-                    <span style={{ 
-                      marginLeft: "10px", 
-                      fontSize: "12px",
-                      color: "#666"
-                    }}>
-                      ID: {review.id}
-                    </span>
+                    <>
+                      <button
+                        className="delete-review-btn"
+                        onClick={() => handleAdminDelete(review.id)}
+                        style={{
+                          fontSize: "18px",
+                          background: "none",
+                          border: "none",
+                          cursor: "pointer",
+                          color: "#ff4444",
+                          fontWeight: "bold",
+                          marginLeft: "10px"
+                        }}
+                      >
+                        ×
+                      </button>
+                      <span style={{ 
+                        marginLeft: "10px", 
+                        fontSize: "12px",
+                        color: "#666"
+                      }}>
+                        ID: {review.id}
+                      </span>
+                    </>
                   )}
                 </div>
                 <p className="review-content">{review.text}</p>

@@ -421,9 +421,9 @@ body {
 }
 
 .close-btn {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  position: sticky;
+  top: 1rem;
+  right: 1rem;
   width: 40px;
   height: 40px;
   display: flex;
@@ -435,6 +435,10 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   color: #666;
+  float: right;
+  margin-left: auto;
+  margin-bottom: 1rem;
+  z-index: 10;
 }
 
 .close-btn:hover {
@@ -446,6 +450,8 @@ body {
 .order-header {
   margin-bottom: 2rem;
   text-align: center;
+  padding-top: 0.5rem; /* Додаємо трохи простору зверху */
+  clear: both; /* Щоб хрестик не впливав на позиціювання */
 }
 
 .order-header h2 {
@@ -757,6 +763,15 @@ textarea {
 @media (max-width: 768px) {
   .order-form-container {
     padding: 1.5rem;
+  }
+
+  .close-btn {
+    position: sticky;
+    top: 0.5rem;
+    right: 0.5rem;
+    margin-bottom: 0.5rem;
+    background: rgba(245, 245, 245, 0.9);
+    backdrop-filter: blur(5px);
   }
   
   .delivery-options, .payment-options {
